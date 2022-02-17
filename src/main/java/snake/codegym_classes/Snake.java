@@ -14,6 +14,7 @@ public class Snake {
     }
 
     private Direction direction = Direction.LEFT;
+
     public Snake(int x, int y) {
         GameObject first = new GameObject(x, y);
         GameObject second = new GameObject(x + 1, y);
@@ -26,18 +27,18 @@ public class Snake {
     }
 
     public void draw(Game game) {
-        for (int i = 0;i < snakeParts.size(); i++) {
+        for (int i = 0; i < snakeParts.size(); i++) {
             if (i == 0) {
                 if (isAlive) {
-                    game.setCellValueEx(snakeParts.get(0).x, snakeParts.get(0).y, Color.NONE, HEAD_SIGN, Color.BLACK,75);
+                    game.setCellValueEx(snakeParts.get(0).x, snakeParts.get(0).y, Color.NONE, HEAD_SIGN, Color.BLACK, 75);
                 } else {
-                    game.setCellValueEx(snakeParts.get(0).x, snakeParts.get(0).y, Color.NONE, HEAD_SIGN, Color.RED,75);
+                    game.setCellValueEx(snakeParts.get(0).x, snakeParts.get(0).y, Color.NONE, HEAD_SIGN, Color.RED, 75);
                 }
             } else {
                 if (isAlive) {
-                    game.setCellValueEx(snakeParts.get(i).x, snakeParts.get(i).y, Color.NONE, BODY_SIGN, Color.BLACK,75);
+                    game.setCellValueEx(snakeParts.get(i).x, snakeParts.get(i).y, Color.NONE, BODY_SIGN, Color.BLACK, 75);
                 } else {
-                    game.setCellValueEx(snakeParts.get(i).x, snakeParts.get(i).y, Color.NONE, BODY_SIGN, Color.RED,75);
+                    game.setCellValueEx(snakeParts.get(i).x, snakeParts.get(i).y, Color.NONE, BODY_SIGN, Color.RED, 75);
                 }
             }
 
@@ -47,5 +48,29 @@ public class Snake {
 
     public void move() {
 
+    }
+
+    public GameObject createNewHead() {
+
+        switch (direction) {
+            case LEFT:
+                return new GameObject(snakeParts.get(0).x - 1, snakeParts.get(0).y);
+
+            case RIGHT:
+                return new GameObject(snakeParts.get(0).x + 1, snakeParts.get(0).y);
+
+            case DOWN:
+                return new GameObject(snakeParts.get(0).x, snakeParts.get(0).y + 1);
+
+            case UP:
+                return new GameObject(snakeParts.get(0).x, snakeParts.get(0).y - 1);
+
+            default:
+                return null;
+        }
+    }
+
+    public void removeTail() {
+        snakeParts.remove(snakeParts.size() - 1);
     }
 }
