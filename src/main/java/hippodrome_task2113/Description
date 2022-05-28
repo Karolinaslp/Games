@@ -1,0 +1,11 @@
+HIPPODROME
+
+This is Java implementation of game hippodrome, copied from CodeGym course.
+
+Game implementation:
+ 1.Three horses compete in the race.
+ 2.Each horse has a name, speed, and distance.
+ 3.The horse that runs the longest distance wins :)
+
+How to play:
+ Just click run and enjoy ;)
